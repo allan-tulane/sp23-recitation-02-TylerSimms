@@ -1,6 +1,6 @@
 # CMPS 2200  Recitation 02
 
-**Name (Team Member 1):**_________________________  
+**Name (Team Member 1):** Tyler Simms  
 **Name (Team Member 2):**_________________________
 
 In this recitation, we will investigate recurrences. 
@@ -48,12 +48,43 @@ where $W(1) = 1$.
 
 - [ ] 4. (2 point) Now, derive the asymptotic behavior of $W(n)$ using $f(n) = 1$, $f(n) = \log n$ and $f(n) = n$. Then, generate actual values for $W(n)$ for your code and confirm that the trends match your derivations.
 
-**TODO: your answer goes here**
+When $f(n) = 1$, the asymptotic behavior is O(n). When $f(n) = n$, the asymptotic behavior is O(n^2). When $f(n) = \log n$, the asymptotic behavior is O(nlogn). My derivations match the trends in the chart below. The chart from left to right is $f(n) = 1$, $f(n) = n$, and $f(n) = \log n$.
+
+
+|     n |   W_1 |    W_2 |   W_3 |
+|-------|-------|--------|-------|
+|    10 |    15 |     36 |     8 |
+|    20 |    31 |     92 |    16 |
+|    50 |    63 |    276 |    32 |
+|   100 |   127 |    652 |    64 |
+|  1000 |  1023 |   9120 |   512 |
+|  5000 |  8191 |  61728 |  4096 |
+| 10000 | 16383 | 133456 |  8192 |
 
 - [ ] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about $c > \log_b a$? And if they are equal? Modify `compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer. 
 
-**TODO: your answer goes here**
+|     n |       W_1 |   W_2 |    W_3 |
+|-------|-----------|-------|--------|
+|    10 |       174 |    15 |     36 |
+|    20 |       748 |    31 |     92 |
+|    50 |      4790 |    63 |    276 |
+|   100 |     19580 |   127 |    652 |
+|  1000 |   1990744 |  1023 |   9120 |
+|  5000 |  49957880 |  8191 |  61728 |
+| 10000 | 199915760 | 16383 | 133456 |
+
+This comparison was done using a = 2 and b = 2. The work increases very quickly when $c > \log_b a$, as seen in the W_1 column. The work increases much slower when $c < \log_b a$, relative to when $c > \log_b a$, as seen in the W_2 column. I modified the 'compare_work' function to also print the work when $c = \log_b a$. When $c = \log_b a$, the work increases faster than when $c < \log_b a$ but not as fast as when $c > \log_b a$, as seen in the W_3 column.
 
 - [ ] 6. (3 points) $W(n)$ is meant to represent the running time of some recursive algorithm. Suppose we always had $a$ processors available to us and we wanted to compute the span of the same algorithm. Implement the function `span_calc` to compute the empirical span, where the work of the algorithm is given by $W(n)$. Implement `test_compare_span` to create a new comparison function for comparing span functions. Derive the asymptotic expressions for the span of the recurrences you used in problem 4 above. Confirm that everything matches up as it should. 
 
-**TODO: your answer goes here**
+The asymptotic expressions for the span are the same as those of the work for the recurrences from problem 4. The table below confirms this.
+
+|     n |   W_1 |    W_2 |   W_3 |
+|-------|-------|--------|-------|
+|    10 |    15 |     36 |     8 |
+|    20 |    31 |     92 |    16 |
+|    50 |    63 |    276 |    32 |
+|   100 |   127 |    652 |    64 |
+|  1000 |  1023 |   9120 |   512 |
+|  5000 |  8191 |  61728 |  4096 |
+| 10000 | 16383 | 133456 |  8192 |
