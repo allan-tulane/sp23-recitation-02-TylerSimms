@@ -48,7 +48,7 @@ where $W(1) = 1$.
 
 - [ ] 4. (2 point) Now, derive the asymptotic behavior of $W(n)$ using $f(n) = 1$, $f(n) = \log n$ and $f(n) = n$. Then, generate actual values for $W(n)$ for your code and confirm that the trends match your derivations.
 
-When $f(n) = 1$, the asymptotic behavior is O(n). When $f(n) = n$, the asymptotic behavior is O(n^2). When $f(n) = \log n$, the asymptotic behavior is O(nlogn). My derivations match the trends in the chart below. The chart from left to right is $f(n) = 1$, $f(n) = n$, and $f(n) = \log n$.
+This comparison was done using a = 2 and b = 2. When $f(n) = 1$, the asymptotic behavior is O(n) and the recurrence is leaf dominated. When $f(n) = n$, the asymptotic behavior is O(n^2) and th recurrence is root dominated. When $f(n) = \log n$, the asymptotic behavior is O(nlogn) and the recurrence is balanced. My derivations match the trends in the chart below. The chart from left to right is $f(n) = 1$, $f(n) = n$, and $f(n) = \log n$.
 
 
 |     n |   W_1 |    W_2 |   W_3 |
@@ -73,11 +73,11 @@ When $f(n) = 1$, the asymptotic behavior is O(n). When $f(n) = n$, the asymptoti
 |  5000 |  49957880 |  8191 |  61728 |
 | 10000 | 199915760 | 16383 | 133456 |
 
-This comparison was done using a = 2 and b = 2. The work increases very quickly when $c > \log_b a$, as seen in the W_1 column. The work increases much slower when $c < \log_b a$, relative to when $c > \log_b a$, as seen in the W_2 column. I modified the 'compare_work' function to also print the work when $c = \log_b a$. When $c = \log_b a$, the work increases faster than when $c < \log_b a$ but not as fast as when $c > \log_b a$, as seen in the W_3 column.
+This comparison was also done using a = 2 and b = 2. The work increases very quickly when $c > \log_b a$, as seen in the W_1 column. The asymptotic behavior is O(nlog(n)) The work increases much slower when $c < \log_b a$, relative to when $c > \log_b a$, as seen in the W_2 column. The asymptotic behavior is O(n). I modified the 'compare_work' function to also show the work when $c = \log_b a$. When $c = \log_b a$, the work increases faster than when $c < \log_b a$ but not as fast as when $c > \log_b a$, as seen in the W_3 column. The asymptotic behavior is O(n^2).
 
 - [ ] 6. (3 points) $W(n)$ is meant to represent the running time of some recursive algorithm. Suppose we always had $a$ processors available to us and we wanted to compute the span of the same algorithm. Implement the function `span_calc` to compute the empirical span, where the work of the algorithm is given by $W(n)$. Implement `test_compare_span` to create a new comparison function for comparing span functions. Derive the asymptotic expressions for the span of the recurrences you used in problem 4 above. Confirm that everything matches up as it should. 
 
-The asymptotic expressions for the span are the same as those of the work for the recurrences from problem 4. The table below confirms this.
+The asymptotic expressions for the span are the same as those of the work for the recurrences from problem 4. The table below confirms that the work and span match.
 
 |     n |   W_1 |    W_2 |   W_3 |
 |-------|-------|--------|-------|
